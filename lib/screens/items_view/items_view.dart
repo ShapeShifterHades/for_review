@@ -38,7 +38,6 @@ class _ItemsViewState extends State<ItemsView> {
               title: '$kGoods ${state.items.length}',
               onTap: () {
                 BlocProvider.of<ItemBloc>(context).add(AddItem());
-                setState(() {});
                 controller.animateTo(0,
                     duration: const Duration(milliseconds: 600),
                     curve: Curves.bounceIn);
@@ -55,12 +54,8 @@ class _ItemsViewState extends State<ItemsView> {
                 (BuildContext ctx, index) {
                   return ItemTile(
                       item: state.items[index],
-                      index: index,
-                      onTap: () {
-                        BlocProvider.of<ItemBloc>(context)
-                            .add(DeleteItem(index: index));
-                        setState(() {});
-                      });
+                      onTap: () => BlocProvider.of<ItemBloc>(context)
+                          .add(DeleteItem(index: index)));
                 },
                 childCount: state.items.length,
               ),

@@ -29,7 +29,8 @@ class ItemsRepository {
 
   List<Item> setUpInitialData() {
     final int maxItems = rng.nextInt(90000) + 10000;
-    return List<Item>.generate(
-        maxItems, (i) => Item.fromJson(kFakeData['data']![rng.nextInt(3)]));
+    final List<Item> _fakeData =
+        kFakeData['data']!.map((e) => Item.fromJson(e)).toList();
+    return List<Item>.generate(maxItems, (i) => _fakeData[rng.nextInt(3)]);
   }
 }

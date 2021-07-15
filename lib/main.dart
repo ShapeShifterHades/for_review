@@ -4,10 +4,8 @@ import 'package:for_review/blocs/item/item_bloc.dart';
 import 'package:for_review/constants.dart';
 import 'package:for_review/repository/items_repository.dart';
 import 'package:for_review/screens/items_view/items_view.dart';
-import 'package:for_review/simple_bloc_observer.dart';
 
 void main() {
-  Bloc.observer = SimpleBlocObserver();
   runApp(const ItemsApp());
 }
 

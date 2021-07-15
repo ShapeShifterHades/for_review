@@ -6,11 +6,9 @@ import 'package:transparent_image/transparent_image.dart';
 
 class ItemTile extends StatelessWidget {
   final VoidCallback onTap;
-  final int index;
   final Item item;
   const ItemTile({
     Key? key,
-    required this.index,
     required this.item,
     required this.onTap,
   }) : super(key: key);

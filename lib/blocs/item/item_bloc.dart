@@ -32,6 +32,7 @@ class ItemBloc extends Bloc<ItemEvent, ItemsState> {
   }
 
   Stream<ItemsState> _mapStartAppToState() async* {
+    yield ItemsLoading();
     _itemsSubscription?.cancel();
     _itemsSubscription =
         _itemsRepository.items().listen((items) => add(ItemsUpdated(items)));
@@ -39,10 +40,12 @@ class ItemBloc extends Bloc<ItemEvent, ItemsState> {
   }
 
   Stream<ItemsState> _mapItemDeletedToState(DeleteItem event) async* {
+    yield ItemsLoading();
     _itemsRepository.deleteItem(event.index);
   }
 
   Stream<ItemsState> _mapItemAddedToState() async* {
+    yield ItemsLoading();
     _itemsRepository.addItem();
   }
 
